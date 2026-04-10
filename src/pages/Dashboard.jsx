@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { supabase } from '../lib/supabase'
 import { 
   LayoutDashboard, 
   Users, 
@@ -44,9 +45,7 @@ const Dashboard = () => {
         padding: '24px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
-          <div style={{ width: '32px', height: '32px', background: 'var(--accent-cyan)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: '#000', fontWeight: 'bold' }}>L</span>
-          </div>
+          <img src="/lexona-favicon.png" alt="Lexona" style={{ width: '32px', height: '32px' }} />
           <span style={{ fontSize: '1.2rem', fontWeight: '700', letterSpacing: '1px' }}>LEXONA</span>
         </div>
 
@@ -120,52 +119,63 @@ const Dashboard = () => {
   )
 }
 
-const ProspectsModule = () => (
-  <div className="glass" style={{ padding: '32px' }}>
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-      <h2 style={{ fontSize: '1.5rem' }}>Gestion des Prospects</h2>
-      <div style={{ display: 'flex', gap: '12px' }}>
-        <button className="btn-secondary" style={{ fontSize: '0.85rem' }}>Filtrer</button>
-        <button className="btn-primary" style={{ fontSize: '0.85rem' }}>Ajouter un prospect</button>
+const ProspectsModule = () => {
+  const [leads, setLeads] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchLeads = async () => {
+      const { data, error } = await supabase.from('leads').select('*').order('created_at', { ascending: false })
+      if (!error && data) setLeads(data)
+      setLoading(false)
+    }
+    fetchLeads()
+  }, [])
+
+  return (
+    <div className="glass" style={{ padding: '32px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+        <h2 style={{ fontSize: '1.5rem' }}>Gestion des Prospects (Live)</h2>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button className="btn-secondary" style={{ fontSize: '0.85rem' }}>Filtrer</button>
+          <button className="btn-primary" style={{ fontSize: '0.85rem' }}>Ajouter un prospect</button>
+        </div>
+      </div>
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+          <thead>
+            <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+              <th style={{ padding: '16px' }}>Nom</th>
+              <th style={{ padding: '16px' }}>Email</th>
+              <th style={{ padding: '16px' }}>Statut</th>
+              <th style={{ padding: '16px' }}>Date</th>
+              <th style={{ padding: '16px' }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {loading ? (
+              <tr><td colSpan="5" style={{ padding: '40px', textAlign: 'center' }}>Chargement...</td></tr>
+            ) : leads.length === 0 ? (
+              <tr><td colSpan="5" style={{ padding: '40px', textAlign: 'center' }}>Aucun prospect pour le moment.</td></tr>
+            ) : leads.map((row, i) => (
+              <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: '0.9rem' }}>
+                <td style={{ padding: '16px', fontWeight: '500' }}>{row.name}</td>
+                <td style={{ padding: '16px', color: 'var(--text-secondary)' }}>{row.email}</td>
+                <td style={{ padding: '16px' }}>
+                  <span style={{ padding: '4px 8px', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', fontSize: '0.75rem' }}>Nouveau</span>
+                </td>
+                <td style={{ padding: '16px', color: 'var(--text-secondary)' }}>{new Date(row.created_at || Date.now()).toLocaleDateString()}</td>
+                <td style={{ padding: '16px' }}>
+                  <button style={{ background: 'none', border: 'none', color: 'var(--accent-cyan)', cursor: 'pointer' }}><ExternalLink size={16} /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-    <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-        <thead>
-          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-            <th style={{ padding: '16px' }}>Nom</th>
-            <th style={{ padding: '16px' }}>Statut</th>
-            <th style={{ padding: '16px' }}>Priorité</th>
-            <th style={{ padding: '16px' }}>Dernière Relance</th>
-            <th style={{ padding: '16px' }}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            { name: "Mme Sarah Bernard", status: "Nouveau", priority: "Haute", date: "Aujourd'hui" },
-            { name: "M. Marc Lefebvre", status: "En cours", priority: "Moyenne", date: "Hier" },
-            { name: "Cabinet Immobilier Sud", status: "Qualifié", priority: "Basse", date: "Il y a 3 jours" },
-            { name: "Jean Rivière", status: "Nouveau", priority: "Haute", date: "Il y a 1h" }
-          ].map((row, i) => (
-            <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: '0.9rem' }}>
-              <td style={{ padding: '16px', fontWeight: '500' }}>{row.name}</td>
-              <td style={{ padding: '16px' }}>
-                <span style={{ padding: '4px 8px', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', fontSize: '0.75rem' }}>{row.status}</span>
-              </td>
-              <td style={{ padding: '16px' }}>
-                <span style={{ color: row.priority === 'Haute' ? '#fb7185' : '#94a3b8' }}>{row.priority}</span>
-              </td>
-              <td style={{ padding: '16px', color: 'var(--text-secondary)' }}>{row.date}</td>
-              <td style={{ padding: '16px' }}>
-                <button style={{ background: 'none', border: 'none', color: 'var(--accent-cyan)', cursor: 'pointer' }}><ExternalLink size={16} /></button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-)
+  )
+}
 
 const SMSModule = () => (
   <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '24px' }}>
@@ -230,19 +240,30 @@ const DocumentsModule = () => (
   </div>
 )
 
-const Overview = () => (
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
-    {/* Stats Cards */}
-    <div className="glass-premium" style={{ padding: '24px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <div style={{ padding: '8px', background: 'rgba(0, 229, 255, 0.1)', color: 'var(--accent-cyan)', borderRadius: '8px' }}>
-          <Users size={20} />
+const Overview = () => {
+  const [stats, setStats] = useState({ leads: 0, sms: 8, hours: 14.5, dossiers: 156 })
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      const { count, error } = await supabase.from('leads').select('*', { count: 'exact', head: true })
+      if (!error) setStats(prev => ({ ...prev, leads: count || 0 }))
+    }
+    fetchStats()
+  }, [])
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+      {/* Stats Cards */}
+      <div className="glass-premium" style={{ padding: '24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+          <div style={{ padding: '8px', background: 'rgba(0, 229, 255, 0.1)', color: 'var(--accent-cyan)', borderRadius: '8px' }}>
+            <Users size={20} />
+          </div>
+          <span style={{ fontSize: '0.8rem', color: '#4ade80', fontWeight: 'bold' }}>+12%</span>
         </div>
-        <span style={{ fontSize: '0.8rem', color: '#4ade80', fontWeight: 'bold' }}>+12%</span>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Prospects actifs</p>
+        <h3 style={{ fontSize: '1.8rem' }}>{stats.leads}</h3>
       </div>
-      <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Prospects actifs</p>
-      <h3 style={{ fontSize: '1.8rem' }}>24</h3>
-    </div>
     <div className="glass-premium" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
         <div style={{ padding: '8px', background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', borderRadius: '8px' }}>
@@ -328,6 +349,7 @@ const Overview = () => (
       </div>
     </div>
   </div>
-)
+  )
+}
 
 export default Dashboard

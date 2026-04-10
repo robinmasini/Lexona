@@ -13,6 +13,7 @@ import {
   LayoutDashboard
 } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { supabase } from '../lib/supabase'
 
 const LandingPage = () => {
   return (
@@ -36,10 +37,8 @@ const LandingPage = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div className="glass" style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyCenter: 'center', background: 'var(--accent-cyan)' }}>
-             <Scale size={20} color="#000" />
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img src="/lexona-favicon.png" alt="Lexona" style={{ width: '32px', height: '32px' }} />
           <span style={{ fontSize: '1.5rem', fontWeight: '700', fontFamily: 'var(--font-display)' }}>LEXONA</span>
         </div>
         
@@ -299,7 +298,7 @@ const LandingPage = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="container" style={{ paddingTop: '100px', paddingBottom: '160px', textAlign: 'center' }}>
+      <section id="contact" className="container" style={{ paddingTop: '100px', paddingBottom: '160px', textAlign: 'center' }}>
          <motion.div
            initial={{ opacity: 0, scale: 0.9 }}
            whileInView={{ opacity: 1, scale: 1 }}
@@ -307,17 +306,36 @@ const LandingPage = () => {
          >
            <h2 style={{ fontSize: '3.5rem', marginBottom: '24px' }}>Prêt à transformer votre cabinet ?</h2>
            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 48px' }}>
-             Rejoignez les professionnels du droit qui ont déjà choisi l'excellence opérationnelle avec Lexona.
+             Laissez-nous vos coordonnées pour une démonstration personnalisée ou accédez directement à votre dashboard.
            </p>
+           
+           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'start', textAlign: 'left', marginBottom: '80px' }}>
+              <div className="glass-premium" style={{ padding: '40px' }}>
+                <LeadForm />
+              </div>
+              <div style={{ padding: '20px' }}>
+                <h3 style={{ marginBottom: '24px' }}>Pourquoi choisir Lexona ?</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                   {[
+                     { title: "Expertise Métier", desc: "Un outil conçu par et pour les professionnels du droit." },
+                     { title: "Gain de temps", desc: "Automatisez jusqu'à 15h de tâches administratives par semaine." },
+                     { title: "Sécurité Totale", desc: "Chiffrement de bout en bout et hébergement souverain." }
+                   ].map((item, i) => (
+                     <div key={i}>
+                       <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '4px' }}>{item.title}</h4>
+                       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{item.desc}</p>
+                     </div>
+                   ))}
+                </div>
+              </div>
+           </div>
+
            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
              <Link to="/dashboard" style={{ textDecoration: 'none' }}>
                <button className="btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
                  Accéder à mon dashboard
                </button>
              </Link>
-             <button className="btn-secondary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
-               Demander une démonstration
-             </button>
            </div>
          </motion.div>
       </section>
@@ -326,10 +344,8 @@ const LandingPage = () => {
       <footer style={{ background: 'rgba(0,0,0,0.3)', padding: '80px 0 40px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '60px', marginBottom: '60px', textAlign: 'left' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <div style={{ width: '24px', height: '24px', background: 'var(--accent-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Scale size={16} color="#000" />
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+              <img src="/lexona-favicon.png" alt="Lexona" style={{ width: '28px', height: '28px' }} />
               <span style={{ fontSize: '1.2rem', fontWeight: '700' }}>LEXONA</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
@@ -368,6 +384,65 @@ const LandingPage = () => {
         </div>
       </footer>
     </div>
+  )
+}
+
+const LeadForm = () => {
+  const [loading, setLoading] = React.useState(false)
+  const [sent, setSent] = React.useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    const formData = new FormData(e.target)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      message: formData.get('message')
+    }
+
+    const { error } = await supabase.from('leads').insert([data])
+
+    if (error) {
+      console.error(error)
+      alert("Une erreur est survenue lors de l'envoi. Avez-vous configuré la table 'leads' dans Supabase ?")
+    } else {
+      setSent(true)
+    }
+    setLoading(false)
+  }
+
+  if (sent) return (
+    <div style={{ textAlign: 'center', padding: '20px' }}>
+      <CheckCircle2 color="var(--accent-cyan)" size={48} style={{ marginBottom: '16px' }} />
+      <h3>Merci !</h3>
+      <p style={{ color: 'var(--text-secondary)' }}>Votre demande a été envoyée. Nous vous recontacterons sous 24h.</p>
+    </div>
+  )
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Nom complet</label>
+        <input name="name" required className="glass" style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', outline: 'none' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>E-mail</label>
+        <input name="email" type="email" required className="glass" style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', outline: 'none' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Téléphone (pour relances SMS démo)</label>
+        <input name="phone" className="glass" style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', outline: 'none' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Message / Spécialité</label>
+        <textarea name="message" rows="4" className="glass" style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', outline: 'none' }}></textarea>
+      </div>
+      <button disabled={loading} className="btn-primary" style={{ marginTop: '10px' }}>
+        {loading ? 'Envoi...' : 'Demander ma démo'}
+      </button>
+    </form>
   )
 }
 
