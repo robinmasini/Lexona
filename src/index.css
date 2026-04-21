@@ -28,6 +28,21 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 9999;
+  filter: contrast(120%) brightness(120%);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -81,6 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.15));
 }
 
 .gradient-text-accent {
@@ -128,25 +144,45 @@ button {
 /* Background elements */
 .bg-glow {
   position: fixed;
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  filter: blur(100px);
+  filter: blur(120px);
   opacity: 0.8;
+  mix-blend-mode: screen;
 }
 
 .bg-glow-static {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  filter: blur(80px);
+  filter: blur(100px);
+  mix-blend-mode: soft-light;
+}
+
+.premium-border {
+  position: relative;
+}
+
+.premium-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent, rgba(255,255,255,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .container {

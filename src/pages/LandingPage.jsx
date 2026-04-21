@@ -20,9 +20,12 @@ import logoText from '../assets/lexona-ecriture.png'
 const LandingPage = () => {
   return (
     <div className="landing-container">
-      <div className="bg-glow" style={{ top: '5%', left: '15%', opacity: 0.6 }}></div>
-      <div className="bg-glow" style={{ top: '50%', right: '-10%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%)' }}></div>
-      <div className="bg-glow" style={{ bottom: '-10%', left: '10%', opacity: 0.4 }}></div>
+      <div className="bg-glow" style={{ top: '-10%', left: '10%', opacity: 0.7 }}></div>
+      <div className="bg-glow" style={{ top: '40%', right: '-20%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%)' }}></div>
+      <div className="bg-glow" style={{ bottom: '-20%', left: '30%', opacity: 0.5 }}></div>
+      
+      {/* Dynamic Ambient Spotlights */}
+      <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '40vh', background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
       
       {/* Accent Light Lines */}
       <div style={{ position: 'absolute', top: 0, left: '20%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent)', zIndex: -1 }}></div>
@@ -171,12 +174,12 @@ const LandingPage = () => {
             { icon: <ShieldCheck />, title: "Expérience Client Premium", desc: "Un portail client moderne avec suivi de statut et e-signature sans friction." },
             { icon: <LayoutDashboard />, title: "Pilotage & IA Sécurisée", desc: "Dashboard business de vos KPI et IA 'fermée' pour l'extraction de données confidentielles." }
           ].map((item, index) => (
-            <div key={index} className="glass-premium" style={{ padding: '32px' }}>
-              <div style={{ color: '#fff', marginBottom: '20px' }}>
-                {React.cloneElement(item.icon, { size: 32 })}
+            <div key={index} className="glass-premium premium-border" style={{ padding: '40px', transition: 'all 0.5s ease' }}>
+              <div style={{ color: '#fff', marginBottom: '24px', opacity: 0.9 }}>
+                {React.cloneElement(item.icon, { size: 36 })}
               </div>
-              <h3 style={{ marginBottom: '12px', fontSize: '1.5rem' }}>{item.title}</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{item.desc}</p>
+              <h3 style={{ marginBottom: '16px', fontSize: '1.6rem', fontWeight: '700' }}>{item.title}</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7' }}>{item.desc}</p>
             </div>
           ))}
         </div>
