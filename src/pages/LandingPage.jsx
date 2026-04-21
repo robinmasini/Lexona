@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { supabase } from '../lib/supabase'
+import logo from '../assets/lexona-logo.png'
 
 const LandingPage = () => {
   return (
@@ -38,7 +39,7 @@ const LandingPage = () => {
         alignItems: 'center'
       }}>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px' }}>
-          <img src="/lexona-logo.svg" alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
+          <img src={logo} alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
           <span style={{ fontSize: '1.6rem', fontWeight: '800', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>LEXONA</span>
         </div>
         
@@ -110,7 +111,7 @@ const LandingPage = () => {
                <div style={{ padding: '20px', height: '100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   <div style={{ height: '40px', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '20px', padding: '0 10px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <img src="/lexona-logo.svg" alt="" style={{ width: '16px', height: '16px', opacity: 0.5 }} />
+                      <img src={logo} alt="" style={{ width: '16px', height: '16px', opacity: 0.5 }} />
                       <div style={{ width: '40px', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px' }}></div>
                     </div>
                     <div style={{ width: '60px', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px' }}></div>
@@ -348,7 +349,7 @@ const LandingPage = () => {
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '60px', marginBottom: '60px', textAlign: 'left' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <img src="/lexona-logo.svg" alt="Lexona Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+              <img src={logo} alt="Lexona Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '-0.02em' }}>LEXONA</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>

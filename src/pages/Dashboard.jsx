@@ -19,6 +19,7 @@ import {
   Clock,
   ExternalLink
 } from 'lucide-react'
+import logo from '../assets/lexona-logo.png'
 
 const Dashboard = () => {
   const location = useLocation()
@@ -45,7 +46,7 @@ const Dashboard = () => {
         padding: '24px'
       }}>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px', marginBottom: '40px' }}>
-          <img src="/lexona-logo.svg" alt="Lexona Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+          <img src={logo} alt="Lexona Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
           <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '0.5px' }}>LEXONA</span>
         </div>
 
