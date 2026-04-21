@@ -37,7 +37,7 @@ const LandingPage = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px' }}>
           <img src="/lexona-logo.svg" alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
           <span style={{ fontSize: '1.6rem', fontWeight: '800', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>LEXONA</span>
         </div>
