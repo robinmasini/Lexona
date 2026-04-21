@@ -48,7 +48,7 @@ const Dashboard = () => {
       }}>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
           <img src={logoSimple} alt="Lexona Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-          <img src={logoText} alt="LEXONA" style={{ height: '24px', objectFit: 'contain', marginTop: '2px' }} />
+          <img src={logoText} alt="LEXONA" style={{ height: '18px', objectFit: 'contain', marginTop: '2px' }} />
         </div>
 
         <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
