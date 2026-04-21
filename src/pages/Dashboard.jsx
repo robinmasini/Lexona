@@ -19,7 +19,8 @@ import {
   Clock,
   ExternalLink
 } from 'lucide-react'
-import logo from '../assets/lexona-logo.png'
+import logoSimple from '../assets/logo-simple.png'
+import logoText from '../assets/lexona-ecriture.png'
 
 const Dashboard = () => {
   const location = useLocation()
@@ -45,9 +46,9 @@ const Dashboard = () => {
         flexDirection: 'column',
         padding: '24px'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px', marginBottom: '40px' }}>
-          <img src={logo} alt="Lexona Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-          <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '0.5px' }}>LEXONA</span>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
+          <img src={logoSimple} alt="Lexona Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+          <img src={logoText} alt="LEXONA" style={{ height: '24px', objectFit: 'contain', marginTop: '2px' }} />
         </div>
 
         <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>

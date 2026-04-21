@@ -14,7 +14,8 @@ import {
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { supabase } from '../lib/supabase'
-import logo from '../assets/lexona-logo.png'
+import logoSimple from '../assets/logo-simple.png'
+import logoText from '../assets/lexona-ecriture.png'
 
 const LandingPage = () => {
   return (
@@ -41,9 +42,9 @@ const LandingPage = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '14px' }}>
-          <img src={logo} alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
-          <span style={{ fontSize: '1.6rem', fontWeight: '800', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>LEXONA</span>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
+          <img src={logoSimple} alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
+          <img src={logoText} alt="LEXONA" style={{ height: '22px', objectFit: 'contain', marginTop: '2px' }} />
         </div>
         
         <div className="nav-links" style={{ display: 'none', gap: '32px' }}>
@@ -114,9 +115,9 @@ const LandingPage = () => {
                {/* Simplified Dashboard Mockup Preview */}
                <div style={{ padding: '20px', height: '100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   <div style={{ height: '40px', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '20px', padding: '0 10px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <img src={logo} alt="" style={{ width: '16px', height: '16px', opacity: 0.5 }} />
-                      <div style={{ width: '40px', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px' }}></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <img src={logoSimple} alt="" style={{ width: '16px', height: '16px', opacity: 0.8 }} />
+                      <img src={logoText} alt="" style={{ height: '10px', opacity: 0.8 }} />
                     </div>
                     <div style={{ width: '60px', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px' }}></div>
                   </div>
@@ -352,9 +353,9 @@ const LandingPage = () => {
       <footer style={{ background: 'rgba(0,0,0,0.3)', padding: '80px 0 40px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '60px', marginBottom: '60px', textAlign: 'left' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <img src={logo} alt="Lexona Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
-              <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '-0.02em' }}>LEXONA</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+              <img src={logoSimple} alt="Lexona Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+              <img src={logoText} alt="LEXONA" style={{ height: '18px', objectFit: 'contain' }} />
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
               La plateforme de pilotage nouvelle génération pour les métiers du droit.
