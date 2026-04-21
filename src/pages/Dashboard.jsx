@@ -256,38 +256,38 @@ const Overview = () => {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
       {/* Stats Cards */}
-      <div className="glass-premium" style={{ padding: '24px' }}>
+      <div className="glass-premium premium-border" style={{ padding: '24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.1)', color: '#fff', borderRadius: '8px' }}>
+          <div style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', borderRadius: '8px' }}>
             <Users size={20} />
           </div>
-          <span style={{ fontSize: '0.8rem', color: '#4ade80', fontWeight: 'bold' }}>+12%</span>
+          <span style={{ fontSize: '0.8rem', color: '#fff', fontWeight: 'bold', opacity: 0.8 }}>+12%</span>
         </div>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Prospects actifs</p>
         <h3 style={{ fontSize: '1.8rem' }}>{stats.leads}</h3>
       </div>
-    <div className="glass-premium" style={{ padding: '24px' }}>
+    <div className="glass-premium premium-border" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <div style={{ padding: '8px', background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', borderRadius: '8px' }}>
+        <div style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', borderRadius: '8px' }}>
           <MessageSquare size={20} />
         </div>
-        <span style={{ fontSize: '0.8rem', color: '#4ade80', fontWeight: 'bold' }}>+5</span>
+        <span style={{ fontSize: '0.8rem', color: '#fff', fontWeight: 'bold', opacity: 0.8 }}>+5</span>
       </div>
       <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Taux de conversion</p>
       <h3 style={{ fontSize: '1.8rem' }}>{stats.conversion}%</h3>
     </div>
-    <div className="glass-premium" style={{ padding: '24px' }}>
+    <div className="glass-premium premium-border" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <div style={{ padding: '8px', background: 'rgba(251, 146, 60, 0.1)', color: '#fb923c', borderRadius: '8px' }}>
+        <div style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', borderRadius: '8px' }}>
           <Clock size={20} />
         </div>
       </div>
       <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Heures gagnées / sem</p>
       <h3 style={{ fontSize: '1.8rem' }}>14.5</h3>
     </div>
-    <div className="glass-premium" style={{ padding: '24px' }}>
+    <div className="glass-premium premium-border" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <div style={{ padding: '8px', background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', borderRadius: '8px' }}>
+        <div style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', borderRadius: '8px' }}>
           <FolderOpen size={20} />
         </div>
       </div>
