@@ -45,8 +45,8 @@ const LandingPage = () => {
       />
 
       <motion.div className="bg-glow" style={{ top: '-10%', left: '10%', opacity: 0.7, y: y1 }}></motion.div>
-      <motion.div className="bg-glow" style={{ top: '40%', right: '-20%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%)', y: y2 }}></motion.div>
-      <motion.div className="bg-glow" style={{ bottom: '-20%', left: '30%', opacity: 0.5, y: y3 }}></motion.div>
+      <div className="bg-glow" style={{ top: '40%', right: '-20%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%)' }}></div>
+      <div className="bg-glow" style={{ bottom: '-20%', left: '30%', opacity: 0.5 }}></div>
       
       {/* Dynamic Ambient Spotlights */}
       <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '40vh', background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
@@ -179,18 +179,12 @@ const LandingPage = () => {
       </header>
 
       <section id="features" className="container" style={{ marginTop: '140px' }}>
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '80px' }}
-        >
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2 style={{ fontSize: '3.2rem', marginBottom: '24px', letterSpacing: '-0.03em' }}>Un Écosystème Dédié à Votre <span className="gradient-text-accent">Croissance.</span></h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
             Oubliez les outils juridiques classiques. Lexona est un centre de commande business conçu pour maximiser chaque opportunité de votre cabinet.
           </p>
-        </motion.div>
+        </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           {[
@@ -201,12 +195,8 @@ const LandingPage = () => {
             { icon: <ShieldCheck />, title: "Expérience Client Premium", desc: "Un portail client moderne avec suivi de statut et e-signature sans friction." },
             { icon: <LayoutDashboard />, title: "Pilotage & IA Sécurisée", desc: "Dashboard business de vos KPI et IA 'fermée' pour l'extraction de données confidentielles." }
           ].map((item, index) => (
-            <motion.div 
+            <div 
               key={index} 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass-premium premium-border" 
               style={{ padding: '40px', transition: 'all 0.5s ease' }}
             >
@@ -215,7 +205,7 @@ const LandingPage = () => {
               </div>
               <h3 style={{ marginBottom: '16px', fontSize: '1.6rem', fontWeight: '700' }}>{item.title}</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7' }}>{item.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
