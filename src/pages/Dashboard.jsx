@@ -44,9 +44,9 @@ const Dashboard = () => {
         flexDirection: 'column',
         padding: '24px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
-          <img src="/lexona-favicon.png" alt="Lexona" style={{ width: '32px', height: '32px' }} />
-          <span style={{ fontSize: '1.2rem', fontWeight: '700', letterSpacing: '1px' }}>LEXONA</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '40px' }}>
+          <img src="/lexona-favicon.png" alt="Lexona Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+          <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '0.5px' }}>LEXONA</span>
         </div>
 
         <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>

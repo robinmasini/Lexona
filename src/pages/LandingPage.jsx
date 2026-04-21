@@ -37,9 +37,9 @@ const LandingPage = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <img src="/lexona-favicon.png" alt="Lexona" style={{ width: '32px', height: '32px' }} />
-          <span style={{ fontSize: '1.5rem', fontWeight: '700', fontFamily: 'var(--font-display)' }}>LEXONA</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <img src="/lexona-favicon.png" alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
+          <span style={{ fontSize: '1.6rem', fontWeight: '800', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>LEXONA</span>
         </div>
         
         <div className="nav-links" style={{ display: 'none', gap: '32px' }}>
@@ -108,9 +108,12 @@ const LandingPage = () => {
             <div className="glass" style={{ width: '100%', height: '100%', borderRadius: '16px', overflow: 'hidden', background: '#0a0e17' }}>
                {/* Simplified Dashboard Mockup Preview */}
                <div style={{ padding: '20px', height: '100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  <div style={{ height: '40px', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', gap: '20px' }}>
-                    <div style={{ width: '100px', height: '10px', background: 'rgba(255,255,255,0.1)', borderRadius: '5px' }}></div>
-                    <div style={{ width: '100px', height: '10px', background: 'rgba(255,255,255,0.1)', borderRadius: '5px' }}></div>
+                  <div style={{ height: '40px', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '20px', padding: '0 10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <img src="/lexona-favicon.png" alt="" style={{ width: '16px', height: '16px', opacity: 0.5 }} />
+                      <div style={{ width: '40px', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px' }}></div>
+                    </div>
+                    <div style={{ width: '60px', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px' }}></div>
                   </div>
                   <div style={{ display: 'flex', gap: '20px', flex: 1 }}>
                     <div style={{ width: '200px', borderRight: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -344,9 +347,9 @@ const LandingPage = () => {
       <footer style={{ background: 'rgba(0,0,0,0.3)', padding: '80px 0 40px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '60px', marginBottom: '60px', textAlign: 'left' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-              <img src="/lexona-favicon.png" alt="Lexona" style={{ width: '28px', height: '28px' }} />
-              <span style={{ fontSize: '1.2rem', fontWeight: '700' }}>LEXONA</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+              <img src="/lexona-favicon.png" alt="Lexona Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+              <span style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '-0.02em' }}>LEXONA</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
               La plateforme de pilotage nouvelle génération pour les métiers du droit.
