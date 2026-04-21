@@ -20,7 +20,7 @@ const LandingPage = () => {
     <div className="landing-container">
       {/* Background Glows */}
       <div className="bg-glow" style={{ top: '10%', left: '10%' }}></div>
-      <div className="bg-glow" style={{ top: '40%', right: '10%', background: 'radial-gradient(circle, rgba(41, 121, 255, 0.05) 0%, transparent 70%)' }}></div>
+      <div className="bg-glow" style={{ top: '40%', right: '10%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%)' }}></div>
       <div className="bg-glow" style={{ bottom: '10%', left: '20%' }}></div>
 
       {/* Navbar */}
@@ -66,20 +66,20 @@ const LandingPage = () => {
           <span className="glass" style={{ 
             padding: '6px 16px', 
             fontSize: '0.8rem', 
-            color: 'var(--accent-cyan)',
-            border: '1px solid rgba(0, 229, 255, 0.2)',
+            color: '#fff',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
             borderRadius: '100px',
             marginBottom: '24px',
             display: 'inline-block'
           }}>
-            L'excellence technologique au service du droit
+            L'excellence technologique au service de votre rentabilité
           </span>
           <h1 className="gradient-text" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', lineHeight: '1.1', marginBottom: '24px' }}>
-            La Performance Juridique <br />
-            <span className="gradient-text-accent">Centralisée Intelligemment.</span>
+            Maximisez la Rentabilité <br />
+            <span className="gradient-text-accent">de votre Cabinet.</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto 40px' }}>
-            Lexona automatise votre administratif, centralise vos documents et relance vos prospects. Libérez du temps pour l'essentiel : vos clients et votre expertise.
+            Ne perdez plus jamais un dossier faute de réactivité. Lexona automatise votre intake, vos relances et votre facturation pour transformer chaque appel en succès.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/dashboard">
@@ -158,15 +158,15 @@ const LandingPage = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           {[
-            { icon: <Clock />, title: "Temps perdu", desc: "Trop d'heures consacrées à la paperasse au lieu de vos dossiers." },
-            { icon: <MessageSquare />, title: "Appels manqués", desc: "Chaque appel non rappelé est une opportunité perdue pour votre cabinet." },
-            { icon: <Users />, title: "Suivi prospect faible", desc: "Manque de visibilité sur vos opportunités et relances commerciales." },
-            { icon: <FileText />, title: "Documents dispersés", desc: "Difficulté à centraliser et retrouver les pièces importantes rapidement." },
-            { icon: <Zap />, title: "Tâches répétitives", desc: "Saisie manuelle et processus archaïques qui ralentissent votre réactivité." },
-            { icon: <LayoutDashboard />, title: "Manque de pilotage", desc: "Pas de vision d'ensemble sur la performance de votre structure." }
+            { icon: <Zap />, title: "Lead In-take & Conversion", desc: "Qualification instantanée, rappels SMS et prise de RDV automatique pour ne plus rater aucun appel." },
+            { icon: <Clock />, title: "Zéro Perte Administrative", desc: "Pré-remplissage, templates et automatisation documentaire pour regagner jusqu'à 15h de temps facturable." },
+            { icon: <CheckCircle2 />, title: "Paiement & Recouvrement", desc: "Hébergement de factures, liens de paiement et relances automatiques pour assurer votre cash-flow." },
+            { icon: <FileText />, title: "Dossier Client Unique", desc: "Centralisation totale : documents, signatures et historique d'échanges en un lieu sécurisé." },
+            { icon: <ShieldCheck />, title: "Expérience Client Premium", desc: "Un portail client moderne avec suivi de statut et e-signature sans friction." },
+            { icon: <LayoutDashboard />, title: "Pilotage & IA Sécurisée", desc: "Dashboard business de vos KPI et IA 'fermée' pour l'extraction de données confidentielles." }
           ].map((item, index) => (
             <div key={index} className="glass-premium" style={{ padding: '32px' }}>
-              <div style={{ color: 'var(--accent-cyan)', marginBottom: '20px' }}>
+              <div style={{ color: '#fff', marginBottom: '20px' }}>
                 {React.cloneElement(item.icon, { size: 32 })}
               </div>
               <h3 style={{ marginBottom: '12px', fontSize: '1.5rem' }}>{item.title}</h3>
@@ -194,7 +194,7 @@ const LandingPage = () => {
                   { title: "Centralisation Sécurisée", desc: "Tous vos dossiers et documents accessibles en un clic, partout." }
                 ].map((f, i) => (
                   <div key={i} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                    <div className="glass" style={{ padding: '8px', background: 'rgba(0, 229, 255, 0.1)', color: 'var(--accent-cyan)' }}>
+                    <div className="glass" style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.05)', color: '#fff' }}>
                       <CheckCircle2 size={20} />
                     </div>
                     <div>
@@ -211,7 +211,7 @@ const LandingPage = () => {
                 <div style={{ width: '100%', aspectRatio: '4/3', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                    <div style={{ textAlign: 'center' }}>
                       <div className="glass" style={{ padding: '24px', marginBottom: '20px', display: 'inline-block' }}>
-                        <Users size={48} color="var(--accent-cyan)" />
+                        <Users size={48} color="#fff" />
                       </div>
                       <h4>Gestion Prospects</h4>
                       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Interface intuitive et performante</p>
@@ -237,7 +237,7 @@ const LandingPage = () => {
               <div style={{ fontSize: '4rem', fontWeight: '900', color: 'rgba(255,255,255,0.03)', position: 'absolute', top: '-40px', left: '0', zIndex: -1 }}>
                 {item.step}
               </div>
-              <h3 style={{ color: 'var(--accent-cyan)', fontSize: '1.2rem', marginBottom: '12px' }}>{item.title}</h3>
+              <h3 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '12px' }}>{item.title}</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{item.desc}</p>
             </div>
           ))}
@@ -272,27 +272,27 @@ const LandingPage = () => {
       <section id="security" className="container">
         <div className="glass-premium" style={{ display: 'flex', flexWrap: 'wrap', gap: '60px', alignItems: 'center', padding: '60px' }}>
           <div style={{ flex: '1 1 300px' }}>
-            <ShieldCheck size={64} color="var(--accent-cyan)" style={{ marginBottom: '24px' }} />
-            <h2 style={{ fontSize: '2rem', marginBottom: '24px' }}>Confidentialité et Rigueur Professionnelle</h2>
+            <ShieldCheck size={64} color="#fff" style={{ marginBottom: '24px' }} />
+            <h2 style={{ fontSize: '2rem', marginBottom: '24px' }}>Secret Professionnel & Rigueur</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '32px' }}>
-              Lexona est conçu pour répondre aux exigences de sécurité les plus strictes du secteur juridique. Vos données sont cryptées, centralisées et accessibles uniquement par vous.
+              Lexona déploie une infrastructure de sécurité souveraine et des IA fermées pour garantir la confidentialité absolue. Les avocats veulent résumer et rédiger plus vite sans mettre le secret pro en danger.
             </p>
             <div style={{ display: 'flex', gap: '24px' }}>
                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem' }}>
-                  <CheckCircle2 size={16} color="var(--accent-cyan)" /> Hébergement Sécurisé
+                  <CheckCircle2 size={16} color="#fff" /> IA Encadrée
                </div>
                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem' }}>
-                  <CheckCircle2 size={16} color="var(--accent-cyan)" /> RGPD Compliant
+                  <CheckCircle2 size={16} color="#fff" /> Hébergement Local
                </div>
             </div>
           </div>
           <div style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center' }}>
             {/* Visual element for security */}
             <div style={{ position: 'relative', width: '200px', height: '200px' }}>
-              <div className="glass" style={{ width: '100%', height: '100%', borderRadius: '50%', border: '4px solid rgba(0, 229, 255, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                 <Scale size={80} color="var(--accent-cyan)" opacity={0.2} />
+              <div className="glass" style={{ width: '100%', height: '100%', borderRadius: '50%', border: '4px solid rgba(255, 255, 255, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                 <Scale size={80} color="#fff" opacity={0.1} />
               </div>
-              <div className="glass" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: '20px', borderRadius: '50%', background: 'var(--accent-cyan)' }}>
+              <div className="glass" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: '20px', borderRadius: '50%', background: '#fff' }}>
                 <ShieldCheck size={40} color="#000" />
               </div>
             </div>
@@ -325,7 +325,7 @@ const LandingPage = () => {
                      { title: "Sécurité Totale", desc: "Chiffrement de bout en bout et hébergement souverain." }
                    ].map((item, i) => (
                      <div key={i}>
-                       <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '4px' }}>{item.title}</h4>
+                       <h4 style={{ color: '#fff', marginBottom: '4px' }}>{item.title}</h4>
                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{item.desc}</p>
                      </div>
                    ))}
@@ -418,7 +418,7 @@ const LeadForm = () => {
 
   if (sent) return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <CheckCircle2 color="var(--accent-cyan)" size={48} style={{ marginBottom: '16px' }} />
+      <CheckCircle2 color="#fff" size={48} style={{ marginBottom: '16px' }} />
       <h3>Merci !</h3>
       <p style={{ color: 'var(--text-secondary)' }}>Votre demande a été envoyée. Nous vous recontacterons sous 24h.</p>
     </div>

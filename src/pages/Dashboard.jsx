@@ -58,8 +58,8 @@ const Dashboard = () => {
                 gap: '12px', 
                 padding: '12px 16px', 
                 borderRadius: '8px',
-                color: location.pathname === item.path ? 'var(--accent-cyan)' : 'var(--text-secondary)',
-                background: location.pathname === item.path ? 'rgba(0, 229, 255, 0.05)' : 'transparent',
+                color: location.pathname === item.path ? '#fff' : 'var(--text-secondary)',
+                background: location.pathname === item.path ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
                 transition: 'all 0.2s'
               }}>
                 {item.icon}
@@ -112,7 +112,7 @@ const Dashboard = () => {
           <Route path="/prospects" element={<ProspectsModule />} />
           <Route path="/sms" element={<SMSModule />} />
           <Route path="/documents" element={<DocumentsModule />} />
-          <Route path="*" element={<div style={{ padding: '40px', textAlign: 'center' }}><ShieldCheck size={48} color="var(--accent-cyan)" /><h2 style={{marginTop: '20px'}}>Module en cours de développement</h2></div>} />
+          <Route path="*" element={<div style={{ padding: '40px', textAlign: 'center' }}><ShieldCheck size={48} color="#fff" /><h2 style={{marginTop: '20px'}}>Module en cours de développement</h2></div>} />
         </Routes>
       </main>
     </div>
@@ -166,7 +166,7 @@ const ProspectsModule = () => {
                 </td>
                 <td style={{ padding: '16px', color: 'var(--text-secondary)' }}>{new Date(row.created_at || Date.now()).toLocaleDateString()}</td>
                 <td style={{ padding: '16px' }}>
-                  <button style={{ background: 'none', border: 'none', color: 'var(--accent-cyan)', cursor: 'pointer' }}><ExternalLink size={16} /></button>
+                  <button style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer' }}><ExternalLink size={16} /></button>
                 </td>
               </tr>
             ))}
@@ -189,7 +189,7 @@ const SMSModule = () => (
           <div key={i} className="glass" style={{ padding: '16px', background: 'rgba(255,255,255,0.02)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
               <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>À : {sms.to}</span>
-              <span style={{ fontSize: '0.75rem', color: sms.status === 'Envoyé' ? '#34d399' : 'var(--accent-cyan)' }}>{sms.status}</span>
+              <span style={{ fontSize: '0.75rem', color: sms.status === 'Envoyé' ? '#fff' : '#94a3b8' }}>{sms.status}</span>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontStyle: 'italic', marginBottom: '8px' }}>"{sms.content}"</p>
             <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>{sms.time}</span>
@@ -209,7 +209,7 @@ const SMSModule = () => (
                   <p style={{ fontSize: '0.9rem', fontWeight: '600' }}>{call.name}</p>
                   <p style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>{call.time}</p>
                </div>
-               <button style={{ background: 'var(--accent-cyan)', border: 'none', borderRadius: '4px', padding: '4px 8px', fontSize: '0.7rem', color: '#000', fontWeight: 'bold' }}>Relancer</button>
+               <button style={{ background: '#fff', border: 'none', borderRadius: '4px', padding: '4px 8px', fontSize: '0.7rem', color: '#000', fontWeight: 'bold' }}>Relancer</button>
             </div>
           ))}
        </div>
@@ -231,7 +231,7 @@ const DocumentsModule = () => (
         { name: "Identité_Client_Rivière.jpg", size: "3.4 MB", type: "IMG" }
       ].map((doc, i) => (
         <div key={i} className="glass" style={{ padding: '20px', textAlign: 'center', cursor: 'pointer' }}>
-          <FileText size={32} color="var(--accent-cyan)" style={{ marginBottom: '12px' }} />
+          <FileText size={32} color="#fff" style={{ marginBottom: '12px' }} />
           <p style={{ fontSize: '0.85rem', fontWeight: '500', marginBottom: '4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{doc.name}</p>
           <p style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>{doc.type} • {doc.size}</p>
         </div>
@@ -241,7 +241,7 @@ const DocumentsModule = () => (
 )
 
 const Overview = () => {
-  const [stats, setStats] = useState({ leads: 0, sms: 8, hours: 14.5, dossiers: 156 })
+  const [stats, setStats] = useState({ leads: 0, conversion: 68, hours: 14.5, revenue: 12450 })
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -256,7 +256,7 @@ const Overview = () => {
       {/* Stats Cards */}
       <div className="glass-premium" style={{ padding: '24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ padding: '8px', background: 'rgba(0, 229, 255, 0.1)', color: 'var(--accent-cyan)', borderRadius: '8px' }}>
+          <div style={{ padding: '8px', background: 'rgba(255, 255, 255, 0.1)', color: '#fff', borderRadius: '8px' }}>
             <Users size={20} />
           </div>
           <span style={{ fontSize: '0.8rem', color: '#4ade80', fontWeight: 'bold' }}>+12%</span>
@@ -271,8 +271,8 @@ const Overview = () => {
         </div>
         <span style={{ fontSize: '0.8rem', color: '#4ade80', fontWeight: 'bold' }}>+5</span>
       </div>
-      <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Relances SMS à traiter</p>
-      <h3 style={{ fontSize: '1.8rem' }}>8</h3>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Taux de conversion</p>
+      <h3 style={{ fontSize: '1.8rem' }}>{stats.conversion}%</h3>
     </div>
     <div className="glass-premium" style={{ padding: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
@@ -289,8 +289,8 @@ const Overview = () => {
           <FolderOpen size={20} />
         </div>
       </div>
-      <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Dossiers en cours</p>
-      <h3 style={{ fontSize: '1.8rem' }}>156</h3>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Honoraires sécurisés (€)</p>
+      <h3 style={{ fontSize: '1.8rem' }}>{stats.revenue.toLocaleString()}€</h3>
     </div>
 
     {/* Main Widgets */}
