@@ -12,17 +12,41 @@ import {
   Zap,
   LayoutDashboard
 } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { supabase } from '../lib/supabase'
 import logoSimple from '../assets/logo-simple.png'
 import logoText from '../assets/lexona-ecriture.png'
 
 const LandingPage = () => {
+  const { scrollYProgress } = useScroll();
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  
+  const y1 = useTransform(smoothProgress, [0, 1], [0, -300]);
+  const y2 = useTransform(smoothProgress, [0, 1], [0, -500]);
+  const y3 = useTransform(smoothProgress, [0, 1], [0, -200]);
+  const heroOpacity = useTransform(smoothProgress, [0, 0.15], [1, 0]);
+  const heroScale = useTransform(smoothProgress, [0, 0.15], [1, 0.95]);
+
   return (
-    <div className="landing-container">
-      <div className="bg-glow" style={{ top: '-10%', left: '10%', opacity: 0.7 }}></div>
-      <div className="bg-glow" style={{ top: '40%', right: '-20%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%)' }}></div>
-      <div className="bg-glow" style={{ bottom: '-20%', left: '30%', opacity: 0.5 }}></div>
+    <div className="landing-container" style={{ position: 'relative' }}>
+      {/* Scroll Progress Bar */}
+      <motion.div 
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          height: '2px', 
+          background: 'rgba(255,255,255,0.3)', 
+          scaleX: scrollYProgress, 
+          transformOrigin: '0%', 
+          zIndex: 2000 
+        }} 
+      />
+
+      <motion.div className="bg-glow" style={{ top: '-10%', left: '10%', opacity: 0.7, y: y1 }}></motion.div>
+      <motion.div className="bg-glow" style={{ top: '40%', right: '-20%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%)', y: y2 }}></motion.div>
+      <motion.div className="bg-glow" style={{ bottom: '-20%', left: '30%', opacity: 0.5, y: y3 }}></motion.div>
       
       {/* Dynamic Ambient Spotlights */}
       <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '40vh', background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
@@ -67,9 +91,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <header className="container" style={{ paddingTop: '180px', textAlign: 'center' }}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+           style={{ opacity: heroOpacity, scale: heroScale }}
         >
           <span className="glass" style={{ 
             padding: '6px 16px', 
@@ -156,14 +178,19 @@ const LandingPage = () => {
         </motion.div>
       </header>
 
-      {/* Problems Section */}
-      <section id="problems" className="container" style={{ marginTop: '100px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>Les défis du quotidien juridique</h2>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Le manque d'outils adaptés freine votre croissance et surcharge votre esprit.
+      <section id="features" className="container" style={{ marginTop: '140px' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          style={{ textAlign: 'center', marginBottom: '80px' }}
+        >
+          <h2 style={{ fontSize: '3.2rem', marginBottom: '24px', letterSpacing: '-0.03em' }}>Un Écosystème Dédié à Votre <span className="gradient-text-accent">Croissance.</span></h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
+            Oubliez les outils juridiques classiques. Lexona est un centre de commande business conçu pour maximiser chaque opportunité de votre cabinet.
           </p>
-        </div>
+        </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           {[
@@ -174,13 +201,21 @@ const LandingPage = () => {
             { icon: <ShieldCheck />, title: "Expérience Client Premium", desc: "Un portail client moderne avec suivi de statut et e-signature sans friction." },
             { icon: <LayoutDashboard />, title: "Pilotage & IA Sécurisée", desc: "Dashboard business de vos KPI et IA 'fermée' pour l'extraction de données confidentielles." }
           ].map((item, index) => (
-            <div key={index} className="glass-premium premium-border" style={{ padding: '40px', transition: 'all 0.5s ease' }}>
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="glass-premium premium-border" 
+              style={{ padding: '40px', transition: 'all 0.5s ease' }}
+            >
               <div style={{ color: '#fff', marginBottom: '24px', opacity: 0.9 }}>
                 {React.cloneElement(item.icon, { size: 36 })}
               </div>
               <h3 style={{ marginBottom: '16px', fontSize: '1.6rem', fontWeight: '700' }}>{item.title}</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7' }}>{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
