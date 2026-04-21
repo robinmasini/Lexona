@@ -19,10 +19,13 @@ import logo from '../assets/lexona-logo.png'
 const LandingPage = () => {
   return (
     <div className="landing-container">
-      {/* Background Glows */}
-      <div className="bg-glow" style={{ top: '10%', left: '10%' }}></div>
-      <div className="bg-glow" style={{ top: '40%', right: '10%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%)' }}></div>
-      <div className="bg-glow" style={{ bottom: '10%', left: '20%' }}></div>
+      <div className="bg-glow" style={{ top: '5%', left: '15%', opacity: 0.6 }}></div>
+      <div className="bg-glow" style={{ top: '50%', right: '-10%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%)' }}></div>
+      <div className="bg-glow" style={{ bottom: '-10%', left: '10%', opacity: 0.4 }}></div>
+      
+      {/* Accent Light Lines */}
+      <div style={{ position: 'absolute', top: 0, left: '20%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent)', zIndex: -1 }}></div>
+      <div style={{ position: 'absolute', top: 0, right: '25%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent)', zIndex: -1 }}></div>
 
       {/* Navbar */}
       <nav className="glass" style={{
@@ -104,7 +107,8 @@ const LandingPage = () => {
             aspectRatio: '16/9', 
             borderRadius: '24px',
             padding: '10px',
-            background: 'rgba(255,255,255,0.02)'
+            background: 'rgba(255,255,255,0.01)',
+            boxShadow: '0 0 80px rgba(255,255,255,0.03)'
           }}>
             <div className="glass" style={{ width: '100%', height: '100%', borderRadius: '16px', overflow: 'hidden', background: '#0a0e17' }}>
                {/* Simplified Dashboard Mockup Preview */}
