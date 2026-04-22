@@ -66,14 +66,14 @@ const LandingPage = () => {
         width: '90%',
         maxWidth: '1200px',
         zIndex: 1000,
-        padding: '12px 32px',
+        padding: '10px 40px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
-          <img src={logoSimple} alt="Lexona Logo" style={{ width: '52px', height: '52px', objectFit: 'contain' }} />
-          <img src={logoText} alt="LEXONA" style={{ height: '26px', objectFit: 'contain', marginTop: '2px' }} />
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '16px' }}>
+          <img src={logoSimple} alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
+          <img src={logoText} alt="LEXONA" style={{ height: '18px', objectFit: 'contain', marginTop: '2px' }} />
         </div>
         
         <div className="nav-links" style={{ display: 'none', gap: '32px' }}>
