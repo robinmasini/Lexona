@@ -17,13 +17,16 @@ import {
   Plus,
   ArrowUpRight,
   Clock,
-  ExternalLink
+  ExternalLink,
+  X
 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import logoSimple from '../assets/logo-simple.png'
 import logoText from '../assets/lexona-ecriture.png'
 
 const Dashboard = () => {
   const location = useLocation()
+  const [isModalOpen, setIsModalOpen] = useState(false)
   
   const navItems = [
     { icon: <LayoutDashboard size={20} />, label: "Tableau de bord", path: "/dashboard" },
@@ -100,14 +103,21 @@ const Dashboard = () => {
               <Search size={18} color="var(--text-secondary)" />
               <input type="text" placeholder="Rechercher..." style={{ background: 'none', border: 'none', color: '#fff', outline: 'none', fontSize: '0.9rem' }} />
             </div>
-            <div className="glass" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Bell size={20} />
-            </div>
-            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button 
+              className="btn-primary" 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+              onClick={() => setIsModalOpen(true)}
+            >
               <Plus size={18} /> Nouveau Dossier
             </button>
           </div>
         </header>
+
+        <AnimatePresence>
+          {isModalOpen && (
+            <NewFolderModal onClose={() => setIsModalOpen(false)} />
+          )}
+        </AnimatePresence>
 
         <Routes>
           <Route path="/" element={<Overview />} />
@@ -118,6 +128,132 @@ const Dashboard = () => {
         </Routes>
       </main>
     </div>
+  )
+}
+
+const NewFolderModal = ({ onClose }) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    nature: 'Conseil',
+    description: ''
+  })
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(0,0,0,0.8)',
+        backdropFilter: 'blur(10px)',
+        zIndex: 2000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px'
+      }}
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="glass-premium premium-border"
+        style={{
+          width: '100%',
+          maxWidth: '600px',
+          background: 'rgba(15, 23, 42, 0.9)',
+          padding: '40px',
+          borderRadius: '24px',
+          boxShadow: '0 0 100px rgba(255,255,255,0.05)'
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+          <div>
+            <h2 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Ouverture de dossier</h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Renseignez les informations du nouveau client</p>
+          </div>
+          <button 
+            onClick={onClose}
+            style={{ 
+              background: 'rgba(255,255,255,0.05)', 
+              border: 'none', 
+              color: '#fff', 
+              padding: '10px', 
+              borderRadius: '12px',
+              cursor: 'pointer' 
+            }}
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
+          <div>
+            <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>Prénom</label>
+            <input 
+              type="text" 
+              className="glass" 
+              style={{ width: '100%', padding: '12px 16px', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} 
+              placeholder="Ex: Sarah"
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>Nom</label>
+            <input 
+              type="text" 
+              className="glass" 
+              style={{ width: '100%', padding: '12px 16px', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} 
+              placeholder="Ex: Bernard"
+            />
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '24px' }}>
+          <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>Email</label>
+          <input 
+            type="email" 
+            className="glass" 
+            style={{ width: '100%', padding: '12px 16px', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} 
+            placeholder="sarah.bernard@email.fr"
+          />
+        </div>
+
+        <div style={{ marginBottom: '24px' }}>
+          <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>Nature d'ouverture de dossier</label>
+          <select 
+            className="glass" 
+            style={{ width: '100%', padding: '12px 16px', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(15, 23, 42, 0.9)' }}
+          >
+            <option value="contentieux">Contentieux</option>
+            <option value="conseil">Conseil</option>
+            <option value="arbitrage">Arbitrage</option>
+            <option value="urgence">Urgence / Référé</option>
+          </select>
+        </div>
+
+        <div style={{ marginBottom: '32px' }}>
+          <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>Notes préliminaires</label>
+          <textarea 
+            className="glass" 
+            rows="3"
+            style={{ width: '100%', padding: '12px 16px', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', resize: 'none' }}
+            placeholder="Détails rapides sur l'affaire..."
+          />
+        </div>
+
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <button className="btn-secondary" style={{ flex: 1 }} onClick={onClose}>Annuler</button>
+          <button className="btn-primary" style={{ flex: 2 }}>Créer le dossier</button>
+        </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
