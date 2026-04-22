@@ -144,26 +144,35 @@ button {
 /* Background elements */
 .bg-glow {
   position: fixed;
-  width: 1000px;
-  height: 1000px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -1;
-  filter: blur(120px);
-  opacity: 0.8;
-  mix-blend-mode: screen;
-}
-
-.bg-glow-static {
-  position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 1200px;
+  height: 1200px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
+  filter: blur(140px);
+  opacity: 0.8;
+  mix-blend-mode: soft-light;
+}
+
+.bg-glow-static {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
   filter: blur(100px);
+  mix-blend-mode: overlay;
+}
+
+.white-blur-ambient {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
   mix-blend-mode: soft-light;
 }
 

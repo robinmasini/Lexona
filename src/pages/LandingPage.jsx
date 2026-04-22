@@ -44,16 +44,18 @@ const LandingPage = () => {
         }} 
       />
 
-      <motion.div className="bg-glow" style={{ top: '-10%', left: '10%', opacity: 0.7, y: y1 }}></motion.div>
-      <div className="bg-glow" style={{ top: '40%', right: '-20%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%)' }}></div>
-      <div className="bg-glow" style={{ bottom: '-20%', left: '30%', opacity: 0.5 }}></div>
+      <motion.div className="bg-glow" style={{ top: '-15%', left: '0%', opacity: 0.6, y: y1 }}></motion.div>
+      <div className="bg-glow" style={{ top: '25%', right: '-25%', background: 'radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 70%)', width: '1400px', height: '1400px' }}></div>
+      <div className="bg-glow" style={{ bottom: '-10%', left: '25%', opacity: 0.4 }}></div>
       
       {/* Dynamic Ambient Spotlights */}
-      <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '40vh', background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}></div>
+      <div className="white-blur-ambient" style={{ top: '10%', left: '50%', transform: 'translateX(-50%)', width: '80vw', height: '60vh', opacity: 0.8 }}></div>
+      <div className="white-blur-ambient" style={{ top: '60%', left: '10%', width: '40vw', height: '40vh', opacity: 0.3 }}></div>
       
       {/* Accent Light Lines */}
-      <div style={{ position: 'absolute', top: 0, left: '20%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent)', zIndex: -1 }}></div>
-      <div style={{ position: 'absolute', top: 0, right: '25%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent)', zIndex: -1 }}></div>
+      <div style={{ position: 'absolute', top: 0, left: '15%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.03), transparent)', zIndex: -1 }}></div>
+      <div style={{ position: 'absolute', top: 0, right: '20%', width: '1px', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.03), transparent)', zIndex: -1 }}></div>
+      <div style={{ position: 'absolute', top: '15%', left: 0, width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.02), transparent)', zIndex: -1 }}></div>
 
       {/* Navbar */}
       <nav className="glass" style={{
