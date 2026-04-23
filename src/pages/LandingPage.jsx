@@ -71,9 +71,9 @@ const LandingPage = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '16px' }}>
-          <img src={logoSimple} alt="Lexona Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
-          <img src={logoText} alt="LEXONA" style={{ height: '18px', objectFit: 'contain', marginTop: '2px' }} />
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
+          <img src={logoSimple} alt="Lexona Logo" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+          <img src={logoText} alt="LEXONA" style={{ height: '12px', objectFit: 'contain', marginTop: '2px' }} />
         </div>
         
         <div className="nav-links" style={{ display: 'none', gap: '32px' }}>
@@ -384,8 +384,8 @@ const LandingPage = () => {
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '60px', marginBottom: '60px', textAlign: 'left' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
-              <img src={logoSimple} alt="Lexona Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
-              <img src={logoText} alt="LEXONA" style={{ height: '18px', objectFit: 'contain' }} />
+              <img src={logoSimple} alt="Lexona Logo" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
+              <img src={logoText} alt="LEXONA" style={{ height: '12px', objectFit: 'contain' }} />
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
               La plateforme de pilotage nouvelle génération pour les métiers du droit.
