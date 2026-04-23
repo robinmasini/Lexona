@@ -58,19 +58,7 @@ const LandingPage = () => {
       <div style={{ position: 'absolute', top: '15%', left: 0, width: '100%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.02), transparent)', zIndex: -1 }}></div>
 
       {/* Navbar */}
-      <nav className="glass" style={{
-        position: 'fixed',
-        top: '20px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '90%',
-        maxWidth: '1200px',
-        zIndex: 1000,
-        padding: '10px 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
+      <nav className="glass navbar-container">
         <div className="brand-container navbar-brand-container">
           <img src={logoSimple} alt="Lexona Logo" className="brand-logo navbar-brand-logo" />
           <img src={logoText} alt="LEXONA" className="brand-text navbar-brand-text" />
@@ -84,8 +72,8 @@ const LandingPage = () => {
         </div>
 
         <Link to="/dashboard">
-          <button className="btn-primary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>
-            Accéder au Dashboard
+          <button className="btn-primary btn-nav-cta">
+            <span className="hide-mobile">Accéder au </span>Dashboard
           </button>
         </Link>
       </nav>
